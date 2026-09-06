@@ -1,0 +1,12 @@
+.top-menu {
+  transition: translate var(--animation-timing);
+  translate: -100%;
+  padding: 0.5rem 1rem;
+  padding-top: calc(var(--hamburger-height) + var(--hamburger-margin-top));
+  margin-top: -21px;
+  background-color: var(--top-menu-background);
+  color: var(--top-menu-color);
+  min-width: 100% stretch;
+  min-height: 100vh;
+  overflow: scroll;
+}

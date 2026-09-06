@@ -1,0 +1,22 @@
+:root {
+  font-size: 16px;
+
+  --hamburger-bar-width: 24px;
+  --hamburger-bar-height: 5px;
+  --hamburger-gap: 3px;
+  --hamburger-foreground: hsl(140deg 18% 50%);
+  --hamburger-foreground-hover: hsl(262deg 42% 74%);
+  --hamburger-height: calc(var(--hamburger-bar-height) * 3 + var(--hamburger-gap) * 2);
+  --hamburger-x-width: calc(hypot(var(--hamburger-height), var(--hamburger-height)));
+  --hamburger-margin-top: 20px;
+  --hamburger-margin-left: 20px;
+  --top-menu-background: hsl(263deg 100% 87%);
+  --top-menu-color: hsl(263deg 44% 75%);
+  --top-menu-hover-background: hsl(277deg 93% 83%);
+  --top-menu-hover-color: hsl(277deg 47% 71%);
+  --header-background: hsl(141deg 93% 83%);
+  --footer-background: hsl(141deg 93% 83%);
+  --footer-color: hsl(0deg 0% 0%);
+  --animation-timing: 0.2s ease-in-out;
+  --card-description-lines: 3;
+}

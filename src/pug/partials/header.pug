@@ -1,0 +1,9 @@
+header
+  label.hamburger-menu
+    input(type="checkbox")
+  aside.top-menu
+    nav
+      ul
+        each item in menu
+          li
+            a(href=item.link)= item.text
