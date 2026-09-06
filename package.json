@@ -1,0 +1,57 @@
+{
+  "name": "sveak-test-assignment",
+  "version": "1.0.0",
+  "description": "Тестовое задание на вакансию Frontend разработчик в отдел вёрски",
+  "main": "gulpfile.js",
+  "prettier": "@aloskutov/prettier-config",
+  "devDependencies": {
+    "@aloskutov/prettier-config": "^1.0.1",
+    "@eslint/js": "^10.0.1",
+    "browser-sync": "^3.0.4",
+    "del": "^8.0.1",
+    "eslint": "^10.9.1",
+    "globals": "^17.12.0",
+    "gulp": "^5.0.1",
+    "gulp-autoprefixer": "^10.0.0",
+    "gulp-cleaner-css": "^5.0.0",
+    "gulp-cssbeautify": "^3.0.1",
+    "gulp-data": "^1.3.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^5.0.0",
+    "gulp-rename": "^2.1.0",
+    "gulp-sass": "^6.0.1",
+    "gulp-strip-css-comments": "^3.0.0",
+    "prettier": "^3.9.6",
+    "pug": "^3.0.4",
+    "sass": "^1.103.1",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-scss": "^7.2.0",
+    "webpack-stream": "^7.0.0"
+  },
+  "scripts": {
+    "test": "npm run test:scss & npm run test:js & npm run test:gulp",
+    "test:scss": "stylelint \"**/*.scss\"",
+    "test:js": "eslint ./src/assets/js/**/*.js",
+    "test:gulp": "gulp build",
+    "build": "gulp build --build",
+    "watch": "gulp watch",
+    "clean": "gulp clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aloskutov/sveak-test-assignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/aloskutov/sveak-test-assignment/issues"
+  },
+  "homepage": "https://github.com/aloskutov/sveak-test-assignment#readme",
+  "dependencies": {
+    "eslint-plugin-jsdoc": "^64.3.6"
+  }
+}
