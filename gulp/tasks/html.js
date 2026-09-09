@@ -8,17 +8,12 @@ const {src, dest} = gulp;
 
 import spellsData     from '../../data/spells.json' with { type: "json" };
 import menuData       from '../../data/menu.json' with { type: "json" };
-/* import booksData      from '../../data/books.json' with { type: "json" };
-import charactersData from '../../data/characters.json' with { type: "json" };
-import housesData     from '../../data/houses.json' with { type: "json" }; */
-
-
 
 const html = () => {
     return src(paths.build.pug, { allowEmpty: true })
       .pipe(
         pug({
-          pretty: true,
+          ...options.pug,
           locals:{
             menu: menuData,
             spells: spellsData
