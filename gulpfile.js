@@ -1,11 +1,12 @@
 'use strict';
 
 import gulp from 'gulp';
-const { task, series, parallel } = gulp;
+const { task, series, parallel, watch } = gulp;
 
 // Config
 import { paths } from './gulp/config/paths.js';
 import { options } from './gulp/config/options.js';
+import { bs } from './gulp/config/browser-sync.js';
 
 // Tasks
 import { clean } from './gulp/tasks/clean.js';
@@ -14,30 +15,26 @@ import { html } from './gulp/tasks/html.js';
 import { webpack } from './gulp/tasks/webpack.js';
 import { images } from './gulp/tasks/images.js';
 
-import browserSync from 'browser-sync';
+const server = (cb) => {
+  bs.init(options.server,
+    (err) => {
+    if (err) {
+      console.error('BrowserSync initialization error:', err);
+      cb(err);
+      return;
+    }
+    console.log('BrowserSync initialized successfully');
+    cb();
+  });
+};
 
-const watchFiles = async (cb) => {
-  try {
-    browserSync.init(options.server, (err) => {
-      if (err) {
-        console.error('BrowserSync initialization error:', err);
-        cb(err);
-        return;
-      }
-      console.log('BrowserSync initialized successfully');
-    });
-  } catch (err) {
-    console.error('BrowserSync initialization error:', err);
-    cb(err);
-    return;
-  }
+const watcher = () => {
+  watch([paths.watch.html], html);
+  watch([paths.watch.css], styles);
+  watch([paths.watch.js], webpack);
+  watch([paths.watch.images], images);
 
-  gulp.watch([paths.watch.html], html);
-  gulp.watch([paths.watch.css], styles);
-  gulp.watch([paths.watch.js], webpack);
-  gulp.watch([paths.watch.images], images);
-
-  cb();
+  console.log('Watching for changes...');
 };
 
 const build = series(
@@ -45,9 +42,10 @@ const build = series(
   parallel(html, webpack, styles, stylesPassthrough, images)
 );
 
-const watch = series(build, watchFiles);
+const dev = series(build, parallel(server, watcher));
 
-export default watch;
+export { build, dev };
+export default dev;
 task('clean', clean);
 task('build', build);
-task('watch', watch);
+task('dev', dev);

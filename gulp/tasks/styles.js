@@ -1,5 +1,6 @@
 import { paths } from '../config/paths.js';
 import { options } from '../config/options.js';
+import { bs } from '../config/browser-sync.js';
 
 import gulp from 'gulp';
 const { src, dest } = gulp;
@@ -13,7 +14,6 @@ import CSSbeautify from 'gulp-cssbeautify';
 import removeCSSComments from 'gulp-strip-css-comments';
 import cleanCSS from 'gulp-cleaner-css';
 import rename from 'gulp-rename';
-import browserSync from 'browser-sync';
 
 const styles = () => {
   return src(paths.src.css, options.sass)
@@ -34,7 +34,7 @@ const styles = () => {
     .pipe(removeCSSComments())
     .pipe(rename(options.rename))
     .pipe(dest(paths.build.css, { sourcemaps: '.' }))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(bs.stream());
 };
 
 const stylesPassthrough = () => {
@@ -46,7 +46,7 @@ const stylesPassthrough = () => {
       }
     }))
     .pipe(dest(paths.build.css))
-    .pipe(browserSync.stream({ match: '**/*.css' }));
+    .pipe(bs.stream());
 };
 
 export { styles, stylesPassthrough };

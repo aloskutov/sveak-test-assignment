@@ -1,14 +1,31 @@
-import {srcFolder, buildFolder} from './paths.js';
-import {argv} from 'node:process';
+import { srcFolder, buildFolder } from './paths.js';
+import { argv } from 'node:process';
 
 const isProd = argv.includes('--build');
 
 const options = {
-  isProd: false,
   server: {
-    server: {baseDir: buildFolder},
+    server: {
+      baseDir: buildFolder,
+      directory: true,
+      open: true,
+      notify: false,
+      logLevel: 'info',
+      logPrefix: 'Gulp'
+    },
     port: 3000,
+    open: true,
+    notify: false,
+    // Middleware для SPA
+    middleware: (req, res, next) => {
+      // Если запрос не на файл, перенаправляем на index.html
+      if (!req.url.includes('.')) {
+        req.url = '/index.html';
+      }
+      next();
+    },
   },
+  isProd: false,
   pug: {
     pretty: true,
   },
@@ -32,6 +49,11 @@ const options = {
   sass: {
     sourcemap: true,
   },
+  browserSync: {
+    reloadDelay: 100,
+    reloadDebounce: 200,
+    injectChanges: true
+  }
 };
 
-export {options};
+export { options };
