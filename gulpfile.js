@@ -1,12 +1,7 @@
 'use strict';
 
 import gulp from 'gulp';
-const { task, series, parallel, watch } = gulp;
-
-// Config
-import { paths } from './gulp/config/paths.js';
-import { options } from './gulp/config/options.js';
-import { bs } from './gulp/config/browser-sync.js';
+const { task, series, parallel } = gulp;
 
 // Tasks
 import { clean } from './gulp/tasks/clean.js';
@@ -15,6 +10,7 @@ import { html } from './gulp/tasks/html.js';
 import { webpack } from './gulp/tasks/webpack.js';
 import { images } from './gulp/tasks/images.js';
 
+// Utils
 import { server } from './gulp/utils/server.js';
 import { watcher } from './gulp/utils/watcher.js';
 import { registerShutdown } from './gulp/utils/shutdown.js';
@@ -30,6 +26,7 @@ const dev = series(build, parallel(server, watcher));
 
 export { build, dev };
 export default dev;
+
 task('clean', clean);
 task('build', build);
 task('dev', dev);
