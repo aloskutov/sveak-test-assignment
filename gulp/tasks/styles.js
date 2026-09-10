@@ -11,7 +11,6 @@ const sass = gulpSass(dartSass);
 import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
 import CSSbeautify from 'gulp-cssbeautify';
-import removeCSSComments from 'gulp-strip-css-comments';
 import cleanCSS from 'gulp-cleaner-css';
 import rename from 'gulp-rename';
 
