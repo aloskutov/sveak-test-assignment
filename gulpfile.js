@@ -16,6 +16,7 @@ import { webpack } from './gulp/tasks/webpack.js';
 import { images } from './gulp/tasks/images.js';
 
 import { server } from './gulp/utils/server.js';
+import { watcher } from './gulp/utils/watcher.js';
 import { registerShutdown } from './gulp/utils/shutdown.js';
 
 registerShutdown();
