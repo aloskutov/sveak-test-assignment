@@ -1,15 +1,13 @@
-import { srcFolder, buildFolder } from './paths.js';
-import { argv } from 'node:process';
+import { buildFolder } from './paths.js';
+import { env } from 'node:process';
 
-const isProd = argv.includes('--build');
+const isProd = env.NODE_ENV === 'production';
 
 const options = {
-  server: {
+  browserSync: {
     server: {
       baseDir: buildFolder,
       directory: true,
-      open: true,
-      notify: false,
       logLevel: 'info',
       logPrefix: 'Gulp'
     },
@@ -24,8 +22,11 @@ const options = {
       }
       next();
     },
+    reloadDelay: 100,
+    reloadDebounce: 200,
+    injectChanges: true,
   },
-  isProd: false,
+  isProd,
   pug: {
     pretty: true,
   },
@@ -37,10 +38,12 @@ const options = {
     indent: '  ',
   },
   webpack: {
-    mode: isProd ? 'production' : 'development',
-    devtool: !isProd ? 'source-map' : false,
-    output: {
-      filename: '[name].js',
+  mode: isProd ? 'production' : 'development',
+  devtool: isProd ? false : 'source-map',
+  cache: { type: 'filesystem' },
+  output: {
+    filename: '[name].js',
+    chunkFilename: '[name].chunk.js'
     },
   },
   rename: {
@@ -49,10 +52,9 @@ const options = {
   sass: {
     sourcemap: true,
   },
-  browserSync: {
-    reloadDelay: 100,
-    reloadDebounce: 200,
-    injectChanges: true
+  errorHandler: function (err) {
+    console.error('Error:', err.message);
+    this.emit('end');
   }
 };
 
