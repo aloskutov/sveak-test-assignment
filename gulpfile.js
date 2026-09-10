@@ -15,27 +15,7 @@ import { html } from './gulp/tasks/html.js';
 import { webpack } from './gulp/tasks/webpack.js';
 import { images } from './gulp/tasks/images.js';
 
-const server = (cb) => {
-  bs.init(options.server,
-    (err) => {
-    if (err) {
-      console.error('BrowserSync initialization error:', err);
-      cb(err);
-      return;
-    }
-    console.log('BrowserSync initialized successfully');
-    cb();
-  });
-};
-
-const watcher = () => {
-  watch([paths.watch.html], html);
-  watch([paths.watch.css], styles);
-  watch([paths.watch.js], webpack);
-  watch([paths.watch.images], images);
-
-  console.log('Watching for changes...');
-};
+import { server } from './gulp/utils/server.js';
 
 const build = series(
   clean,
