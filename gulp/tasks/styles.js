@@ -15,23 +15,25 @@ import cleanCSS from 'gulp-cleaner-css';
 import rename from 'gulp-rename';
 
 const styles = () => {
-  return src(paths.src.css, options.sass)
+  let pipeline = src(paths.src.css, options.sass)
     .pipe(plumber({
       errorHandler: function (err) {
         console.error('SASS error:', err.message);
         this.emit('end');
       }
     }))
-    .pipe(sass().on('error', function(err) {
-      console.error('SASS compilation error:', err.message);
-      this.emit('end');
-    }))
-    .pipe(autoprefixer(options.autoprefixer))
-    .pipe(CSSbeautify(options.CSSbeautify))
-    .pipe(dest(paths.build.css, { sourcemaps: '.' }))
-    .pipe(cleanCSS())
-    .pipe(removeCSSComments())
-    .pipe(rename(options.rename))
+    .pipe(sass())
+    .pipe(autoprefixer(options.autoprefixer));
+
+  if (options.isProd) {
+    pipeline = pipeline
+      .pipe(cleanCSS())
+      .pipe(rename(options.rename));
+  } else {
+    pipeline = pipeline.pipe(CSSbeautify(options.CSSbeautify));
+  }
+
+  return pipeline
     .pipe(dest(paths.build.css, { sourcemaps: '.' }))
     .pipe(bs.stream());
 };
@@ -39,7 +41,7 @@ const styles = () => {
 const stylesPassthrough = () => {
   return src(paths.src.cssPassthrough)
     .pipe(plumber({
-      errorHandler: function(err) {
+      errorHandler: function (err) {
         console.error('CSS error:', err.message);
         this.emit('end');
       }
