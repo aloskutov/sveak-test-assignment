@@ -3,8 +3,10 @@ import {options} from '../config/options.js';
 import { bs } from '../config/browser-sync.js';
 
 import gulp from 'gulp';
-import pug from 'gulp-pug';
 const {src, dest} = gulp;
+
+import pug from 'gulp-pug';
+import plumber from 'gulp-plumber';
 
 import spellsData     from '../../data/spells.json' with { type: "json" };
 import menuData       from '../../data/menu.json' with { type: "json" };
@@ -12,9 +14,18 @@ import menuData       from '../../data/menu.json' with { type: "json" };
 const html = () => {
     return src(paths.build.pug, { allowEmpty: true })
       .pipe(
+        plumber({
+          errorHandler: function (err) {
+            console.error('PUG error:', err.message);
+            this.emit('end');
+          },
+        })
+      )
+      .pipe(
         pug({
           ...options.pug,
           locals:{
+            isProd: options.isProd,
             menu: menuData,
             spells: spellsData
           }
