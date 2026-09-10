@@ -8,6 +8,7 @@
     "@aloskutov/prettier-config": "^1.0.1",
     "@eslint/js": "^10.0.1",
     "browser-sync": "^3.0.4",
+    "cross-env": "^10.1.0",
     "del": "^8.0.1",
     "eslint": "^10.10.0",
     "eslint-plugin-jsdoc": "^64.3.9",
@@ -35,7 +36,7 @@
     "test:scss": "stylelint \"**/*.scss\"",
     "test:js": "eslint ./src/assets/js/**/*.js",
     "test:gulp": "gulp build",
-    "build": "gulp build --build",
+    "build": "cross-env NODE_ENV=production gulp build",
     "dev": "gulp dev",
     "clean": "gulp clean"
   },
