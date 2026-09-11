@@ -7,13 +7,13 @@ import { watchers } from './watcher.js';
 let isShuttingDown = false;
 
 const shutdown = (signal) => {
-  // Защита от повторного вызова (Ctrl+C несколько раз)
+  // Protection against repeated calls (Ctrl+C pressed several times)
   if (isShuttingDown) return;
   isShuttingDown = true;
 
   console.log(`\n📴 Received ${signal}, shutting down gracefully...`);
 
-  // 1. Закрываем watcher'ы
+  // 1. Closing the watchers
   watchers.forEach((w) => {
     try {
       w.close();
@@ -23,19 +23,19 @@ const shutdown = (signal) => {
   });
   watchers.length = 0;
 
-  // 2. Останавливаем BrowserSync
+  // 2. Stopping BrowserSync
   try {
-    if (bs.instance) bs.exit();
+    bs.exit();
   } catch {
     // ignore
   }
 
-  // 3. Даём задачам завершиться и выходим
-  setTimeout(() => process.exit(0), 100);
+  // 3. Let’s finish our tasks and head out
+  setTimeout(() => process.exit(0), 500);
 };
 
 /**
- *  Явная регистрация shutdown'а
+ *  Explicit registration of ‘shutdown’
  */
 export function registerShutdown() {
   process.on('SIGINT', () => shutdown('SIGINT'));
