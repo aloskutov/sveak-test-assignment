@@ -10,8 +10,8 @@ import plumber from 'gulp-plumber';
 
 import { createAssets } from '../utils/assets.js';
 
-import spellsData from '../../data/spells.json' with { type: "json" };
-import menuData from '../../data/menu.json' with { type: "json" };
+import spellsData from  '../../src/data/spells.json' with { type: "json" };
+import menuData from    '../../src/data/menu.json' with { type: "json" };
 
 const html = () => {
   return src(paths.build.pug, { allowEmpty: true })

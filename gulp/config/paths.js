@@ -15,7 +15,7 @@ const paths = {
     fonts: buildFolder + 'assets/fonts',
   },
   src: {
-    html: srcFolder + '*.html',
+    data: srcFolder + 'data/*.json',
     js: [srcFolder + 'assets/js/**/*.js'],
     jsEntry: srcFolder + 'assets/js/main.js',
     css: [
