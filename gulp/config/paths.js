@@ -7,16 +7,13 @@ const paths = {
     js: buildFolder + 'assets/js',
     css: buildFolder + 'assets/css',
     images: buildFolder + 'assets/images',
-    json: buildFolder + 'json',
     fonts: buildFolder + 'assets/fonts',
     favicons: buildFolder,
   },
   src: {
     pug: [
-      srcFolder + 'pug/index.pug',
       srcFolder + 'pug/pages/*.pug'
     ],
-    data: srcFolder + 'data/**/*.json',
     js: [srcFolder + 'assets/js/**/*.js'],
     jsEntry: srcFolder + 'assets/js/main.js',
     css: [
@@ -24,8 +21,6 @@ const paths = {
     ],
     cssPassthrough: [srcFolder + 'assets/css/**/*.css'],
     images: srcFolder + 'assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,avif}',
-    icoPassthrough: [srcFolder + 'favicon.ico'],
-    json: srcFolder + 'json/**/*.json',
     fonts: srcFolder + 'assets/fonts/**/*.{eot,svg,ttf,woff,woff2}',
     favicons: [
       srcFolder + 'favicon.ico',
