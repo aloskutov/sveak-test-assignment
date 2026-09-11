@@ -7,22 +7,21 @@ const { src, dest } = gulp;
 import plumber from 'gulp-plumber';
 import imagemin, { gifsicle, mozjpeg, optipng, svgo } from 'gulp-imagemin';
 
-
 const images = () => {
   return src(paths.src.images, { encoding: false })
     .pipe(plumber())
-    .pipe(imagemin([
-      gifsicle({ interlaced: true }),
-      mozjpeg({ quality: 85, progressive: true }),
-      optipng({ optimizationLevel: 5 }),
-      svgo({
-        plugins: [
-          { name: 'cleanupIds', params: { remove: false } }
-        ]
-      })
-    ]))
+    .pipe(
+      imagemin([
+        gifsicle({ interlaced: true }),
+        mozjpeg({ quality: 85, progressive: true }),
+        optipng({ optimizationLevel: 5 }),
+        svgo({
+          plugins: [{ name: 'cleanupIds', params: { remove: false } }],
+        }),
+      ])
+    )
     .pipe(dest(paths.build.images))
-    .pipe(bs.stream({ once: true }));
+    .pipe(bs.stream());
 };
 
 export { images };
