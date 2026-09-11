@@ -1,0 +1,7 @@
+extends ../layouts/base.pug
+include ../partials/cards/spells.pug
+
+block content
+  section.cards
+    each spell in spells
+      +spellCard(spell)
