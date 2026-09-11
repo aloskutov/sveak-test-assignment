@@ -12,6 +12,14 @@ const options = {
     port: 3000,
     open: true,
     notify: false,
+    // Middleware для SPA
+    middleware: (req, res, next) => {
+      // Если запрос не на файл, перенаправляем на index.html
+      if (!req.url.includes('.')) {
+        req.url = '/index.html';
+      }
+      next();
+    },
     logLevel: 'info',
     logPrefix: 'Gulp',
     reloadDelay: 100,
