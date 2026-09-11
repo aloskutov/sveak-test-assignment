@@ -15,7 +15,7 @@ const paths = {
       srcFolder + 'pug/index.pug',
       srcFolder + 'pug/pages/*.pug'
     ],
-    data: srcFolder + 'data/*.json',
+    data: srcFolder + 'data/**/*.json',
     js: [srcFolder + 'assets/js/**/*.js'],
     jsEntry: srcFolder + 'assets/js/main.js',
     css: [
