@@ -22,12 +22,12 @@
       background-color: hsl(201deg 42% 82%);
     }
 
-    p.spell {
+    p.card__title {
       height: 30px;
       font-weight: bold;
     }
 
-    p.description {
+    p.card__desc {
       margin-block-start: 1rem;
       display: -webkit-box;
       -webkit-box-orient: vertical;
