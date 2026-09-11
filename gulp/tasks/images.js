@@ -17,15 +17,12 @@ const images = () => {
       optipng({ optimizationLevel: 5 }),
       svgo({
         plugins: [
-          {
-            name: 'cleanupIDs',
-            active: false
-          }
+          { name: 'cleanupIds', params: { remove: false } }
         ]
       })
     ]))
     .pipe(dest(paths.build.images))
-    .pipe(bs.stream());
+    .pipe(bs.stream({ once: true }));
 };
 
 export { images };
