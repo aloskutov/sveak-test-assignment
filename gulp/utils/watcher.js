@@ -1,4 +1,5 @@
 // gulp/utils/watcher.js
+import process from 'node:process';
 import gulp from 'gulp';
 const { watch } = gulp;
 
@@ -11,10 +12,10 @@ import { images } from '../tasks/images.js';
 import { favicons } from '../tasks/favicons.js';
 import { fonts } from '../tasks/fonts.js';
 
-// Храним активные watcher'ы — их нужно закрыть при shutdown
+// We’re keeping active watchers — they need to be closed on shutdown
 export const watchers = [];
 
-export const watcher = () => {
+export const watcher = (cb) => {
   watchers.push(watch([paths.watch.html], html));
   watchers.push(watch([paths.watch.sass], styles));
   watchers.push(watch([paths.watch.css], stylesPassthrough));
@@ -23,5 +24,13 @@ export const watcher = () => {
   watchers.push(watch([paths.watch.favicons], favicons));
   watchers.push(watch([paths.watch.fonts], fonts));
 
+  watchers.push(
+    watch(['./gulp/config/**/*.js', './gulpfile.js'], () => {
+      console.log('Config changed. Please restart "npm run dev".');
+      process.exit(0);
+    })
+  );
+
   console.log('Watching for changes...');
+  cb();
 };
