@@ -1,5 +1,4 @@
-section.cards
-  each spell in spells
-    div.card
-      p.spell= spell.name
-      p.description= spell.description
+mixin spellCard(spell)
+  div.card
+    p.card__title= spell.name
+    p.card__desc= spell.description
