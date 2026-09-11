@@ -22,9 +22,5 @@ const build = series(
 
 const dev = series(build, parallel(server, watcher));
 
-export { build, dev };
+export { build, dev, clean };
 export default dev;
-
-task('clean', clean);
-task('build', build);
-task('dev', dev);

@@ -13,6 +13,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import CSSbeautify from 'gulp-cssbeautify';
 import cleanCSS from 'gulp-cleaner-css';
 import rename from 'gulp-rename';
+import sourcemaps from 'gulp-sourcemaps';
 
 const styles = () => {
   let pipeline = src(paths.src.css, options.sass)
@@ -23,6 +24,7 @@ const styles = () => {
       }
     }))
     .pipe(sass())
+    .pipe(sourcemaps.init())
     .pipe(autoprefixer(options.autoprefixer));
 
   if (options.isProd) {
@@ -34,7 +36,8 @@ const styles = () => {
   }
 
   return pipeline
-    .pipe(dest(paths.build.css, { sourcemaps: '.' }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(dest(paths.build.css))
     .pipe(bs.stream());
 };
 
