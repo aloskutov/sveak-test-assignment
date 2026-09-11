@@ -37,6 +37,10 @@ const options = {
   CSSbeautify: {
     indent: '  ',
   },
+  sass: {
+    style: isProd ? 'compressed' : 'expanded',
+    sourceMap: !isProd,
+  },
   webpack: {
   mode: isProd ? 'production' : 'development',
   devtool: isProd ? false : 'source-map',

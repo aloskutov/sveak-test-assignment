@@ -11,25 +11,21 @@ const sass = gulpSass(dartSass);
 import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
 import CSSbeautify from 'gulp-cssbeautify';
-import cleanCSS from 'gulp-cleaner-css';
 import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 
 const styles = () => {
-  let pipeline = src(paths.src.css, options.sass)
+  let pipeline = src(paths.src.css)
     .pipe(plumber({
       errorHandler: function (err) {
         console.error('SASS error:', err.message);
         this.emit('end');
       }
-    }))
-    .pipe(sass())
-    .pipe(sourcemaps.init())
+    .pipe(sass(options.sass))
     .pipe(autoprefixer(options.autoprefixer));
 
   if (options.isProd) {
     pipeline = pipeline
-      .pipe(cleanCSS())
       .pipe(rename(options.rename));
   } else {
     pipeline = pipeline.pipe(CSSbeautify(options.CSSbeautify));
