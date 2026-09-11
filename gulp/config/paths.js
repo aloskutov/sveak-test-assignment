@@ -4,10 +4,6 @@ const buildFolder = './build/';
 const paths = {
   build: {
     html: buildFolder,
-    pug: [
-      './src/pug/index.pug',
-      './src/pug/pages/*.pug'
-    ],
     js: buildFolder + 'assets/js',
     css: buildFolder + 'assets/css',
     images: buildFolder + 'assets/images',
@@ -15,6 +11,10 @@ const paths = {
     fonts: buildFolder + 'assets/fonts',
   },
   src: {
+    pug: [
+      srcFolder + 'pug/index.pug',
+      srcFolder + 'pug/pages/*.pug'
+    ],
     data: srcFolder + 'data/*.json',
     js: [srcFolder + 'assets/js/**/*.js'],
     jsEntry: srcFolder + 'assets/js/main.js',

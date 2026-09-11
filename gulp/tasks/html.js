@@ -14,7 +14,7 @@ import spellsData from  '../../src/data/spells.json' with { type: "json" };
 import menuData from    '../../src/data/menu.json' with { type: "json" };
 
 const html = () => {
-  return src(paths.build.pug, { allowEmpty: true })
+  return src(paths.src.pug, { allowEmpty: true })
     .pipe(
       plumber({
         errorHandler: function (err) {
