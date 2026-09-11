@@ -2,6 +2,7 @@ import { buildFolder } from './paths.js';
 import { env } from 'node:process';
 
 const isProd = env.NODE_ENV === 'production';
+const publicPath = env.PUBLIC_PATH || '/assets';
 
 const options = {
   browserSync: {
@@ -18,6 +19,7 @@ const options = {
     injectChanges: true,
   },
   isProd,
+  publicPath,
   pug: {
     pretty: true,
   },
@@ -37,6 +39,7 @@ const options = {
   devtool: isProd ? false : 'source-map',
   cache: isProd ? { type: 'filesystem' } : false,
   output: {
+      publicPath: publicPath + '/js/',
     filename: '[name].js',
     chunkFilename: '[name].chunk.js'
     },
