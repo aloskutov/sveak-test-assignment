@@ -21,6 +21,11 @@ const styles = () => {
         console.error('SASS error:', err.message);
         this.emit('end');
       }
+    }));
+  if (!options.isProd) {
+    pipeline = pipeline.pipe(sourcemaps.init());
+  }
+  pipeline = pipeline
     .pipe(sass(options.sass))
     .pipe(autoprefixer(options.autoprefixer));
 
@@ -31,8 +36,11 @@ const styles = () => {
     pipeline = pipeline.pipe(CSSbeautify(options.CSSbeautify));
   }
 
+  if (!options.isProd) {
+    pipeline = pipeline.pipe(sourcemaps.write('.', { includeContent: false }));
+  }
+
   return pipeline
-    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.build.css))
     .pipe(bs.stream());
 };
