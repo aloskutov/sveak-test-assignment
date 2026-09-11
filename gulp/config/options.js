@@ -1,5 +1,13 @@
 import { buildFolder } from './paths.js';
 import { env } from 'node:process';
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const pkg = JSON.parse(
+  readFileSync(join(__dirname, '..', '..', 'package.json'), 'utf8')
+);
 
 const isProd = env.NODE_ENV === 'production';
 const publicPath = env.PUBLIC_PATH || '/assets';
@@ -13,7 +21,7 @@ const options = {
     open: true,
     notify: false,
     logLevel: 'info',
-    logPrefix: 'Gulp',
+    logPrefix: pkg.name,
     reloadDelay: 100,
     reloadDebounce: 200,
     injectChanges: true,
@@ -35,12 +43,12 @@ const options = {
     sourceMap: !isProd,
   },
   webpack: {
-  mode: isProd ? 'production' : 'development',
-  devtool: isProd ? false : 'source-map',
-  cache: isProd ? { type: 'filesystem' } : false,
-  output: {
+    mode: isProd ? 'production' : 'development',
+    devtool: isProd ? false : 'source-map',
+    cache: isProd ? { type: 'filesystem' } : false,
+    output: {
       publicPath: publicPath + '/js/',
-    filename: '[name].js',
+      filename: '[name].js',
       chunkFilename: '[name].chunk.js',
     },
   },
