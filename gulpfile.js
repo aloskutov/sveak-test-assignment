@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-const { task, series, parallel } = gulp;
+const { series, parallel } = gulp;
 
 // Tasks
 import { clean } from './gulp/tasks/clean.js';
