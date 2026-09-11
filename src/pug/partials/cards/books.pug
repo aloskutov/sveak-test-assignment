@@ -1,9 +1,0 @@
-section.cards
-h1 Books
-each book in locals.books
-  div.card
-    h2 #{book.title}
-    p Author: #{book.author}
-    if book.releaseDay
-      p Release Day: #{book.releaseDay}
-    p Description: #[i #{book.description}]
