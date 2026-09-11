@@ -6,13 +6,11 @@ import { bs } from '../config/browser-sync.js';
 import gulp from 'gulp';
 const { src, dest } = gulp;
 
-import plumber from 'gulp-plumber';
 import webpackStream from 'webpack-stream';
 import webpack from 'webpack';
 
 const webpackTask = () => {
   return src(paths.src.jsEntry)
-    .pipe(plumber())
     .pipe(
       webpackStream(options.webpack, webpack, (err, stats) => {
         if (err) {
