@@ -41,7 +41,7 @@ const options = {
   output: {
       publicPath: publicPath + '/js/',
     filename: '[name].js',
-    chunkFilename: '[name].chunk.js'
+      chunkFilename: '[name].chunk.js',
     },
   },
   rename: {
