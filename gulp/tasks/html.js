@@ -8,6 +8,8 @@ const { src, dest } = gulp;
 import pug from 'gulp-pug';
 import plumber from 'gulp-plumber';
 
+import { createAssets } from '../utils/assets.js';
+
 import spellsData from '../../data/spells.json' with { type: "json" };
 import menuData from '../../data/menu.json' with { type: "json" };
 
@@ -26,11 +28,7 @@ const html = () => {
         ...options.pug,
         locals: {
           isProd: options.isProd,
-          asset: (name, ext) => {
-            const suffix = options.isProd ? '.min' : '';
-            const folder = ext === 'css' ? 'css' : ext === 'js' ? 'js' : ext;
-            return `/assets/${folder}/${name}${suffix}.${ext}`;
-          },
+          asset: createAssets({ isProd: options.isProd }),
           menu: menuData,
           spells: spellsData
         }
