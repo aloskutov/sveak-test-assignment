@@ -7,6 +7,8 @@ import { styles, stylesPassthrough } from './gulp/tasks/styles.js';
 import { html } from './gulp/tasks/html.js';
 import { webpack } from './gulp/tasks/webpack.js';
 import { images } from './gulp/tasks/images.js';
+import { favicons } from './gulp/tasks/favicons.js';
+import { fonts } from './gulp/tasks/fonts.js';
 
 // Utils
 import { server } from './gulp/utils/server.js';
@@ -17,7 +19,7 @@ registerShutdown();
 
 const build = series(
   clean,
-  parallel(html, webpack, styles, stylesPassthrough, images)
+  parallel(html, webpack, styles, stylesPassthrough, images, favicons, fonts)
 );
 
 const dev = series(build, parallel(server, watcher));

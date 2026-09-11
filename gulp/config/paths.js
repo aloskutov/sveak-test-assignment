@@ -9,6 +9,7 @@ const paths = {
     images: buildFolder + 'assets/images',
     json: buildFolder + 'json',
     fonts: buildFolder + 'assets/fonts',
+    favicons: buildFolder,
   },
   src: {
     pug: [
@@ -26,6 +27,11 @@ const paths = {
     icoPassthrough: [srcFolder + 'favicon.ico'],
     json: srcFolder + 'json/**/*.json',
     fonts: srcFolder + 'assets/fonts/**/*.{eot,svg,ttf,woff,woff2}',
+    favicons: [
+      srcFolder + 'favicon.ico',
+      srcFolder + 'favicon.svg',
+      srcFolder + 'apple-touch-icon.png',
+    ],
   },
   watch: {
     html: srcFolder + 'pug/**/*.pug',
@@ -33,6 +39,8 @@ const paths = {
     sass: srcFolder + 'assets/sass/**/*.{scss,sass}',
     css: srcFolder + 'assets/css/**/*.css',
     images: srcFolder + 'assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,avif}',
+    favicons: [srcFolder + 'favicon.{ico,svg}', srcFolder + 'apple-touch-icon.png'],
+    fonts: srcFolder + 'assets/fonts/**/*.{eot,svg,ttf,woff,woff2}',
   },
   clean: buildFolder,
 };
