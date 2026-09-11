@@ -18,10 +18,6 @@ const images = () => {
       svgo({
         plugins: [
           {
-            name: 'removeViewBox',
-            active: true
-          },
-          {
             name: 'cleanupIDs',
             active: false
           }

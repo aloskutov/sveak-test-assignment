@@ -35,7 +35,7 @@ const html = () => {
       })
     )
     .pipe(dest(paths.build.html))
-    .pipe(bs.stream());
+    .pipe(bs.reload({ stream: true }));
 };
 
 export { html };
