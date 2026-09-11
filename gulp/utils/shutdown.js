@@ -25,7 +25,7 @@ const shutdown = (signal) => {
 
   // 2. Останавливаем BrowserSync
   try {
-    if (bs.active) bs.exit();
+    if (bs.instance) bs.exit();
   } catch {
     // ignore
   }
