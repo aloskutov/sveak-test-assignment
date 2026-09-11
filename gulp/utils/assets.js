@@ -1,4 +1,4 @@
-export const createAssets = ({ isProd, basePath = '/assets' } = {}) => {
+export const createAssets = ({ isProd = false, basePath = '/assets' } = {}) => {
   const suffix = isProd ? '.min' : '';
 
   return {

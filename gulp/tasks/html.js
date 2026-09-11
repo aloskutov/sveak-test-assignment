@@ -28,7 +28,7 @@ const html = () => {
         ...options.pug,
         locals: {
           isProd: options.isProd,
-          asset: createAssets({ isProd: options.isProd }),
+          asset: createAssets({ isProd: options.isProd, basePath: options.publicPath }),
           menu: menuData,
           spells: spellsData
         }
