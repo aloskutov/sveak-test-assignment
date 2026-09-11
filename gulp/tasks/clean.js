@@ -20,8 +20,8 @@ export const clean = async () => {
       const isPermissionError = error.code === 'EPERM' || error.code === 'EBUSY';
 
       if (isLastAttempt) {
-        console.warn(`Clean skipped: ${error.code} (папка занята другим процессом)`);
-        return;
+        console.warn(`Clean failed after ${maxRetries} attempts (${error.code})`);
+        throw error;
       }
 
       if (isPermissionError) {
