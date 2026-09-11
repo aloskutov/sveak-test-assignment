@@ -30,7 +30,8 @@ const paths = {
   watch: {
     html: [srcFolder + 'pug/**/*.pug', srcFolder + '*.html', srcFolder + 'json/**/*.json'],
     js: srcFolder + 'assets/js/**/*.js',
-    css: srcFolder + 'assets/sass/**/*.scss',
+    sass: srcFolder + 'assets/sass/**/*.{scss,sass}',
+    css: srcFolder + 'assets/css/**/*.css',
     images: srcFolder + 'assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,avif}',
   },
   clean: buildFolder,
