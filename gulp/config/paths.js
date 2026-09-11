@@ -28,7 +28,7 @@ const paths = {
     fonts: srcFolder + 'assets/fonts/**/*.{eot,svg,ttf,woff,woff2}',
   },
   watch: {
-    html: srcFolder + '**/*.{pug,html,json}',
+    html: [srcFolder + 'pug/**/*.pug', srcFolder + '*.html', srcFolder + 'json/**/*.json'],
     js: srcFolder + 'assets/js/**/*.js',
     css: srcFolder + 'assets/sass/**/*.scss',
     images: srcFolder + 'assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,avif}',
