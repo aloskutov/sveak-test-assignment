@@ -16,7 +16,7 @@ const images = () => {
         mozjpeg({ quality: 85, progressive: true }),
         optipng({ optimizationLevel: 5 }),
         svgo({
-          plugins: [{ name: 'cleanupIds', params: { remove: false } }],
+          plugins: [{ name: 'cleanupIDs', params: { remove: false } }],
         }),
       ])
     )
