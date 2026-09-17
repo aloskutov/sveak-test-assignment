@@ -1,4 +1,4 @@
-import { buildFolder } from './paths.js';
+import { buildFolder, srcFolder } from './paths.js';
 import { env } from 'node:process';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -30,6 +30,7 @@ const options = {
   publicPath,
   pug: {
     pretty: true,
+    basedir: srcFolder + 'pug',
   },
   autoprefixer: {
     overrideBrowserslist: ['last 8 versions'],
