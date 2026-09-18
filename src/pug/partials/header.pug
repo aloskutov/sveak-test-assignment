@@ -1,7 +1,9 @@
+include /mixins/button-hamburger.pug
+
 header
-  label.hamburger-menu
-    input(type="checkbox" aria-hidden="true")
-  aside.top-menu
+  +hamburger({expanded: false})
+  aside#top-menu(aria-hidden='true')
+    div.top-menu-header
     nav
       ul
         each item in menu

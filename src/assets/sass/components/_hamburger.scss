@@ -23,14 +23,14 @@
   }
 
   &:has(input:checked)::before {
-    background-color: var(--hamburger-foreground-hover);
+    background-color: var(--hamburger-foreground-clicked);
     rotate: 45deg;
     width: var(--hamburger-x-width);
     translate: 0 calc(var(--hamburger-bar-height) / -2);
   }
 
   &:has(input:checked)::after {
-    background-color: var(--hamburger-foreground-hover);
+    background-color: var(--hamburger-foreground-clicked);
     rotate: -45deg;
     width: var(--hamburger-x-width);
     translate: 0 calc(var(--hamburger-bar-height) / 2);
@@ -55,6 +55,10 @@
     rotate var(--animation-timing),
     translate var(--animation-timing),
     background-color var(--animation-timing);
+
+    &:hover {
+      background-color: var(--hamburger-foreground-hover);
+    }
 }
 
 html:has(.hamburger-menu input:checked) {
