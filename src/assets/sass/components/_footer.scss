@@ -1,6 +1,10 @@
 footer {
   background-color: var(--footer-background);
   padding: 12px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
+  h2 {
+    font-weight: 700;
+    font-size: 14px;
+  }
 }
