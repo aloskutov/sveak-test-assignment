@@ -1,0 +1,24 @@
+mixin icon(name, size = 21)
+  svg.icon-btn__icon(
+    aria-hidden="true"
+    focusable="false"
+    viewBox="0 0 21 21"
+    width=size
+    height=size
+  )
+    case name
+      when 'arrow'
+        path(
+          d="M18.3637 10.0894C19.5942 10.8759 19.5941 12.6732 18.3637 13.4597L3.07716 23.231C1.74589 24.082 7.33641e-07 23.1258 8.02705e-07 21.5458L1.65694e-06 2.00325C1.726e-06 0.423251 1.7459 -0.532851 3.07716 0.318108L18.3637 10.0894Z"
+          fill="currentColor"
+        )
+      when 'circle'
+        circle(
+          cx="11.5" cy="11.5" r="11.5"
+          fill="currentColor"
+        )
+      when 'square'
+        rect(
+          width="21" height="21" rx="4"
+          fill="currentColor"
+        )
