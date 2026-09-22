@@ -1,0 +1,6 @@
+nav.side-menu#side-menu(aria-hidden="true")
+  div.side-menu__header(aria-hidden="true")
+  ul.side-menu__list
+    each item in menu
+      li.side-menu__item
+        a.side-menu__link(href=item.link)= item.text

@@ -1,0 +1,18 @@
+mixin hamburger({ controls = 'side-menu', expanded = false, label = 'Open menu' } = {})
+  button.hamburger(
+    type='button'
+    aria-controls=controls
+    aria-expanded=String(expanded)
+    aria-label=label
+    )
+    svg.hamburger__icon(
+      fill='black'
+      viewBox='0 0 24 21'
+      width='24'
+      height='21'
+      aria-hidden='true'
+      focusable='false'
+    )
+      rect.hamburger__line.hamburger__line--top(width='24' height='5' x='0' y='0' rx='3')
+      rect.hamburger__line.hamburger__line--middle(width='24' height='5' x='0' y='8' rx='3')
+      rect.hamburger__line.hamburger__line--bottom(width='24' height='5' x='0' y='16' rx='3')

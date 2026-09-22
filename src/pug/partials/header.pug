@@ -1,22 +1,5 @@
-include /mixins/icon.pug
-include /mixins/button-hamburger.pug
-
-header
-  +hamburger({expanded: false})
-  aside#top-menu(aria-hidden='true')
-    div.top-menu-header
-    nav
-      ul
-        each item in menu
-          li
-            a(href=item.link)= item.text
-  ul.header-buttons
-    li
-      a.icon-btn(href="#" aria-label="Arrow")
-      +icon('arrow')
-    li
-      a.icon-btn(href="#" aria-label="Circle")
-      +icon('circle')
-    li
-      a.icon-btn(href="#" aria-label="Square")
-      +icon('square')
+header.header
+  div.icon-buttons.header__buttons
+    button.icon-button.icon-button--first(type="button" aria-label="First")
+    button.icon-button.icon-button--second(type="button" aria-label="Second")
+    button.icon-button.icon-button--third(type="button" aria-label="Third")

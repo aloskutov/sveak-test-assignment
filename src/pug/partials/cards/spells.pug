@@ -1,4 +1,4 @@
-mixin spellCard(spell)
-  div.card
-    p.card__title= spell.name
-    p.card__desc= spell.description
+mixin cardsItem({ name, description })
+  .cards__item
+    p.cards__item-title= name
+    p.cards__item-desc= description
