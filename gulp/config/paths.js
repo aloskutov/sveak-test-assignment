@@ -17,7 +17,7 @@ const paths = {
     js: [srcFolder + 'assets/js/**/*.js'],
     jsEntry: srcFolder + 'assets/js/main.js',
     css: [
-      srcFolder + 'assets/sass/**/*.{scss,sass}',
+      srcFolder + 'assets/sass/*.{scss,sass}',
     ],
     cssPassthrough: [srcFolder + 'assets/css/**/*.css'],
     images: srcFolder + 'assets/images/**/*.{jpg,jpeg,png,svg,gif,ico,webp,avif}',
