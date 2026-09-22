@@ -1,10 +1,23 @@
-@use 'base/root';
-@use 'base/base';
-@use 'components/cards';
-@use 'components/header';
-@use 'components/hamburger';
-@use 'components/button-hamburger';
+// 1. Abstracts
+// @use 'abstracts/variables';
+// @use 'abstracts/mixins';
+// @use 'abstracts/functions';
 
-// @use 'components/header-buttons';
-@use 'components/footer';
-@use 'components/top-menu';
+// 2. Base
+@use 'base/reset';
+@use 'base/root';
+@use 'base/page';
+@use 'base/typography';
+
+// 3. Layout
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/side-menu';
+@use 'layout/cards';
+
+// 4. Components
+@use 'components/hamburger';
+@use 'components/icon-buttons';
+
+// 5. Util
+@use 'utilities/scroll-lock';

@@ -1,0 +1,11 @@
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+main {
+  grid-row: 2;
+  background-color: var(--page-background);
+}

@@ -1,0 +1,19 @@
+.footer {
+  $b: #{&};
+
+  background-color: var(--theme-background);
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 500;
+
+  &__title{
+    font-weight: 700;
+    font-size: 14px;
+  }
+}
+
+@media (640px <= width <= 1023px) {
+  .footer {
+    padding-block-end: 0;
+  }
+}

@@ -1,27 +1,33 @@
 :root {
   font-size: 16px;
 
-  --hamburger-bar-width: 24px;
-  --hamburger-bar-height: 5px;
-  --hamburger-gap: 3px;
+  --z-base: 1;
+  --z-header: 1000;
+  --z-side-menu: 1100;
+  --z-hamburger: 1200;
   --hamburger-border-color: transparent;
   --hamburger-border-width: 0;
-  --hamburger-foreground: hsl(141deg 45% 71%);
-  --hamburger-foreground-hover: hsl(141deg 19% 42%);
-  --hamburger-foreground-expanded: hsl(262deg 42% 74%);
-  --hamburger-foreground-expanded-hover: hsl(277deg 47% 71%);
-  --hamburger-height: calc(var(--hamburger-bar-height) * 3 + var(--hamburger-gap) * 2);
-  --hamburger-x-width: calc(hypot(var(--hamburger-height), var(--hamburger-height)));
   --hamburger-margin-top: 20px;
   --hamburger-margin-left: 20px;
-  --top-menu-background: hsl(263deg 100% 87%);
-  --top-menu-color: hsl(263deg 44% 75%);
-  --top-menu-background-hover: hsl(277deg 93% 83%);
-  --top-menu-color-hover: hsl(277deg 47% 71%);
-  --header-background: hsl(141deg 93% 83%);
-  --footer-background: hsl(141deg 93% 83%);
+  --side-menu-background: hsl(263deg 100% 87%);
+  --side-menu-color: hsl(0deg 0% 0% / 0.14);
+  --side-menu-item-background-hover: hsl(306deg 100% 61% / 0.15);
+  --theme-background: hsl(141deg 93% 83%);
+  --page-background: hsl(from var(--theme-background) h s l / 0.4);
+  --cards-grid-background: var(--page-background);
+  --cards-item-background: hsl(0deg 0% 0% / 0.1);
+  --cards-item-background-hover: hsl(from var(--theme-background) calc(h + 120) s l);
+  --cards-item-description-lines: 3;
   --footer-color: hsl(0deg 0% 0%);
   --animation-timing: 0.2s;
   --animation-delay: 0.2s;
-  --card-description-lines: 3;
+
+  @media (640px <= width <= 1023px) {
+    --theme-background: hsl(202deg 100% 79%);
+  }
+
+  @media (width >= 1024px) {
+    --theme-background: hsl(263deg 100% 87% / 0.4);
+    --side-menu-background: var(--theme-background);
+  }
 }

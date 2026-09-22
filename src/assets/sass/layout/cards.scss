@@ -1,0 +1,43 @@
+.cards {
+  $b: #{&};
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
+  gap: 16px;
+  padding: 10px;
+
+  &__item {
+    font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+    background-color: var(--cards-item-background);
+    padding: 8px;
+    border-radius: 8px;
+    aspect-ratio: 1 / 1;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 150px;
+    min-width: 115px;
+    margin: 0 auto;
+    overflow: hidden;
+    transition: background-color var(--animation-timing);
+
+    &:hover {
+      background-color: var(--cards-item-background-hover);
+    }
+  }
+
+  &__item-title {
+    height: 30px;
+    font-weight: bold;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  &__item-desc {
+    margin-block-start: 1rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: var(--cards-item-description-lines);
+    -webkit-line-clamp: var(--cards-item-description-lines);
+    overflow: hidden;
+  }
+}

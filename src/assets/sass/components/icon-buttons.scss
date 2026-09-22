@@ -1,0 +1,26 @@
+.icon-button {
+  $b: #{&};
+
+  width: var(--icon-size, 21px);
+  height: var(--icon-size, 21px);
+  border: 0;
+  background: none;
+  cursor: pointer;
+  background-color: currentcolor;
+  mask: var(--icon) center / contain no-repeat;
+  opacity: 0.13;
+  transition: color .15s ease, opacity .15s ease;
+}
+
+.icon-button:hover {
+  opacity: 0.5;
+}
+
+.icon-button:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.icon-button--first  { --icon: url("/assets/images/header-button-1.svg"); }
+.icon-button--second { --icon: url("/assets/images/header-button-2.svg"); }
+.icon-button--third  { --icon: url("/assets/images/header-button-3.svg"); }
