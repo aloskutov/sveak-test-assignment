@@ -1,6 +1,7 @@
 {
   "plugins": [
-    "stylelint-scss"
+    "stylelint-scss",
+    "@morev/stylelint-plugin"
   ],
   "extends": ["stylelint-config-standard-scss"],
   "rules": {
@@ -10,12 +11,31 @@
     "alpha-value-notation": "number",
     "selector-no-qualifying-type": [true, {
       "ignore": ["attribute", "class", "id"]
-    }],
-    "selector-class-pattern": [
-      "^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$",
-      {
-        "message": "Class names should match the SUIT CSS naming convention"
+    }]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/components/**/*.scss",
+        "**/layout/**/*.scss"
+      ],
+      "rules": {
+        "selector-class-pattern": null,
+        "@morev/bem/selector-pattern": true,
+        "@morev/bem/match-file-name": true,
+        "@morev/bem/block-variable": true,
+        "@morev/bem/no-block-properties": [true, {
+          "presets": ["EXTERNAL_GEOMETRY", "CONTEXT_DEPENDENT"],
+          "perEntity": {
+            "block": {
+              "allowProperties": ["z-index"]
+            }
+          }
+        }],
+        "@morev/bem/no-chained-entities": true,
+        "@morev/bem/no-misplaced-relational-styles": true,
+        "@morev/bem/no-side-effects": true
       }
-    ]
-  }
+    }
+  ]
 }
