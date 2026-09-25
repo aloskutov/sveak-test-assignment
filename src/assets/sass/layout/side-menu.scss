@@ -45,7 +45,7 @@
       margin-inline-end: 20px;
       content: '';
       background-color: var(--side-menu-color);
-      mask: url('/assets/images/list-icon.svg') no-repeat center / contain;
+      mask: url('../images/list-icon.svg') no-repeat center / contain;
     }
 
     @media (hover: hover) {
