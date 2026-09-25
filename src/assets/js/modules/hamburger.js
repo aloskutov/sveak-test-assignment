@@ -1,69 +1,100 @@
+/**
+ * Класс управления боковым меню через кнопку-бургер
+ */
 class Hamburger {
-  /** @private */
-  _button;
-  /** @private */
-  _menu;
-  /** @private */
-  _openLabel;
-  /** @private */
-  _closeLabel;
-  /** @private */
-  _handleClick;
+  #button;
+  #menu;
+  #openLabel;
+  #closeLabel;
+  #scrollToTop;
+  #handleClick;
+  #handleKeydown;
 
   /**
    * Конструктор класса
-   * @param {string} buttonSelector селектор кнопки
-   * @param {string} menuSelector селектор меню
-   * @param {object} options объект опций openLabel, closeLabel, scrollToTop
+   * @param {string} buttonSelector — селектор кнопки
+   * @param {string} menuSelector — селектор меню
+   * @param {object} options — опции: openLabel, closeLabel, scrollToTop
    */
-  constructor(buttonSelector, menuSelector = '#top-menu', options = {}) {
-    this._button = document.querySelector(buttonSelector);
-    this._menu = document.querySelector(menuSelector);
+  constructor(buttonSelector, menuSelector = '#side-menu', options = {}) {
+    this.#button = document.querySelector(buttonSelector);
+    this.#menu = document.querySelector(menuSelector);
 
-    if (!this._button) throw new Error(`Button not found: ${buttonSelector}`);
-    if (!this._menu) throw new Error(`Menu not found: ${menuSelector}`);
+    if (!this.#button) throw new Error(`Button not found: ${buttonSelector}`);
+    if (!this.#menu) throw new Error(`Menu not found: ${menuSelector}`);
 
-    this._openLabel = options.openLabel ?? 'Open menu';
-    this._closeLabel = options.closeLabel ?? 'Close menu';
-    this._scrollToTop = options.scrollToTop ?? false;
+    this.#openLabel = options.openLabel ?? 'Open menu';
+    this.#closeLabel = options.closeLabel ?? 'Close menu';
+    this.#scrollToTop = options.scrollToTop ?? false;
 
-    this._init();
+    this.#init();
 
-    this._handleClick = () => this._handleMenuToggle();
-    this._button.addEventListener('click', () => this._handleMenuToggle());
+    this.#handleClick = () => this.#toggle();
+    this.#handleKeydown = (event) => {
+      if (event.key === 'Escape' && this.#isOpen()) {
+        this.#close();
+        this.#button.focus();
+      }
+    };
+
+    this.#button.addEventListener('click', this.#handleClick);
   }
 
   /**
-   * Установка базовых значений
+   * Установка базовых атрибутов
    */
-  _init() {
-    if (!this._button.hasAttribute('aria-expanded')) {
-      this._button.setAttribute('aria-expanded', 'false');
+  #init() {
+    if (!this.#button.hasAttribute('aria-expanded')) {
+      this.#button.setAttribute('aria-expanded', 'false');
     }
 
-    this._button.setAttribute('aria-controls', this._menu.id);
-    this._button.setAttribute('aria-label', this._openLabel);
+    this.#button.setAttribute('aria-controls', this.#menu.id);
+    this.#button.setAttribute('aria-label', this.#openLabel);
   }
 
   /**
-   * Обработчик события клика по кнопке
+   * Проверяем открыто ли меню
+   * @returns {boolean} true, если открыто
    */
-  _handleMenuToggle() {
-    const isExpanded = this._button.getAttribute('aria-expanded') === 'true';
-
-    this._button.setAttribute('aria-expanded', String(!isExpanded));
-    this._button.setAttribute('aria-label', isExpanded ? this._openLabel : this._closeLabel);
-    this._menu.setAttribute('aria-hidden', String(isExpanded));
-
-    // При закрытии меню, прокручиваем его в начало
-    if (isExpanded && this._scrollToTop) { this._menu.scrollTop = 0; }
+  #isOpen() {
+    return this.#button.getAttribute('aria-expanded') === 'true';
   }
 
   /**
-   * Деструктор класса
+   * Открывает меню
+   */
+  #open() {
+    this.#button.setAttribute('aria-expanded', 'true');
+    this.#button.setAttribute('aria-label', this.#closeLabel);
+    this.#menu.setAttribute('aria-hidden', 'false');
+    document.addEventListener('keydown', this.#handleKeydown);
+  }
+
+  /**
+   * Закрывает меню
+   */
+  #close() {
+    this.#button.setAttribute('aria-expanded', 'false');
+    this.#button.setAttribute('aria-label', this.#openLabel);
+    this.#menu.setAttribute('aria-hidden', 'true');
+    document.removeEventListener('keydown', this.#handleKeydown);
+
+    if (this.#scrollToTop) { this.#menu.scrollTop = 0; }
+  }
+
+  /**
+   * Переключает состояние меню
+   */
+  #toggle() {
+    this.#isOpen() ? this.#close() : this.#open();
+  }
+
+  /**
+   * Деструктор класса — отключает обработчики и освобождает ресурсы
    */
   destroy() {
-    this._button.removeEventListener('click', () => this._handleMenuToggle());
+    this.#button.removeEventListener('click', this.#handleClick);
+    document.removeEventListener('keydown', this.#handleKeydown);
   }
 }
 
