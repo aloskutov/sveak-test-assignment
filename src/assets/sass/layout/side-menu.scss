@@ -8,7 +8,7 @@
   z-index: var(--z-side-menu);
   width: 100%;
   height: 100vh;
-  padding-inline: 22px;
+  padding-inline: var(--side-menu-padding, 22px);
   overflow-y: auto;
   background-color: var(--side-menu-background);
   color: var(--side-menu-color);
@@ -22,7 +22,7 @@
     top: 0;
     z-index: var(--z-base);
     height: 60px;
-    margin-inline: -22px;
+    margin-inline: calc(var(--side-menu-padding, 22px) * -1);
     background-color: var(--side-menu-background);
   }
 
@@ -34,13 +34,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: 51px;
+    min-height: 51px;
+    padding-block: 10px;
+    padding-inline: 12px 20px;
     border-radius: 30px;
 
     &::before {
+      flex-shrink: 0;
       width: 31px;
       height: 31px;
-      margin: 19px 20px 19px 12px;
+      margin-inline: 12px 20px;
       content: '';
       background-color: var(--side-menu-color);
       mask: url('/assets/images/list-icon.svg');
