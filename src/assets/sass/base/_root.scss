@@ -30,4 +30,9 @@
     --theme-background: hsl(263deg 100% 87% / 0.4);
     --side-menu-background: var(--theme-background);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    --animation-timing: 0.01ms;
+    --animation-delay: 0s;
+  }
 }
