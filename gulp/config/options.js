@@ -10,7 +10,7 @@ const pkg = JSON.parse(
 );
 
 const isProd = env.NODE_ENV === 'production';
-const publicPath = env.PUBLIC_PATH || '/assets';
+const publicPath = env.PUBLIC_PATH || './assets';
 
 const options = {
   browserSync: {
