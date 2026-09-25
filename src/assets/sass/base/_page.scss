@@ -1,11 +1,31 @@
 body {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template:
+    "header" auto
+    "main"   1fr
+    "footer" auto
+    / 1fr;
   min-height: 100vh;
   background-color: #fff;
 }
 
+.header { grid-area: header; }
+
 main {
-  grid-row: 2;
+  grid-area: main;
   background-color: var(--page-background);
+}
+
+.footer { grid-area: footer; }
+
+@media (width >= 1024px) {
+  body {
+    grid-template:
+      "menu header" auto
+      "menu main"   1fr
+      "footer footer" auto
+      / 310px 1fr;
+  }
+
+  .side-menu { grid-area: menu; }
 }

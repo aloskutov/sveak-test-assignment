@@ -16,7 +16,6 @@
     box-sizing: border-box;
     width: 100%;
     max-width: 150px;
-    min-width: 115px;
     margin: 0 auto;
     overflow: hidden;
     transition: background-color var(--animation-timing);
@@ -40,5 +39,17 @@
     line-clamp: var(--cards-item-description-lines);
     -webkit-line-clamp: var(--cards-item-description-lines);
     overflow: hidden;
+  }
+}
+
+@media (width >= 640px) {
+  .cards {
+    grid-template-columns: repeat(auto-fill, minmax(128px, max-content));
+    &__item {
+      height: 128px;
+      max-width: 174px;
+      aspect-ratio: auto;
+    }
+
   }
 }

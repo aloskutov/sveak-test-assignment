@@ -69,8 +69,15 @@
 
 @media (width >= 1024px) {
   .side-menu {
-    &__header {
-      display: none;
-    }
+    padding-block-start: 39px;
+    position: static;
+    inset: auto;
+    height: 100%;
+    translate: 0;
+    transition: none;
+    border-right: 1px solid hsl(0deg 0% 0% / 0.14);
+
+    &__header { display: none; }
+    &[aria-hidden='true']  { translate: 0; }
   }
 }

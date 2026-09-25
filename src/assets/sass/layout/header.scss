@@ -17,3 +17,10 @@
     gap: 16px;
   }
 }
+
+@media (width >= 1024px) {
+  .header {
+    position: static;
+    z-index: auto;
+  }
+}
