@@ -9,7 +9,7 @@
   background-color: currentcolor;
   mask: var(--icon) center / contain no-repeat;
   opacity: 0.13;
-  transition: color .15s ease, opacity .15s ease;
+  transition: color var(--animation-timing) ease, opacity var(--animation-timing) ease;
 }
 
 .icon-button:hover {
