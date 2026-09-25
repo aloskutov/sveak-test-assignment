@@ -2,7 +2,7 @@
   $b: #{&};
 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(115px, max-content));
+  grid-template-columns: repeat(auto-fit, minmax(115px, max-content));
   justify-content: center;
   gap: 16px;
   padding: 10px;
