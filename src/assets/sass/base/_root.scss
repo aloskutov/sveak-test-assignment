@@ -12,6 +12,11 @@
   --side-menu-background: hsl(263deg 100% 87%);
   --side-menu-color: hsl(0deg 0% 0% / 0.14);
   --side-menu-item-background-hover: hsl(306deg 100% 61% / 0.15);
+  --side-menu-width: 310px;
+  --side-menu-padding: 22px;
+  --side-menu-padding-top: 39px;
+  --side-menu-item-height: 50px;
+  --header-height: 60px;
   --theme-background: hsl(141deg 93% 83%);
   --page-background: hsl(from var(--theme-background) h s l / 0.4);
   --cards-grid-background: var(--page-background);
