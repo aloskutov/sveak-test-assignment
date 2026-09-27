@@ -59,6 +59,13 @@
     font-weight: 600;
     color: var(--side-menu-color);
     text-decoration: none;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: var(--side-menu-item-lines);
+    -webkit-line-clamp: var(--side-menu-item-lines);
+    overflow: hidden;
   }
 }
 
