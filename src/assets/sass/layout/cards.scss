@@ -22,10 +22,15 @@
   }
 
   &__item-title {
-    height: 30px;
+    height: var(--cards-item-title-heigh);
     font-weight: bold;
     overflow-wrap: break-word;
     hyphens: auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: var(--cards-item-title-lines);
+    -webkit-line-clamp: var(--cards-item-title-lines);
+    overflow: hidden;
   }
 
   &__item-desc {

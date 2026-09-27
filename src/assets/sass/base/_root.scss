@@ -23,6 +23,8 @@
   --cards-grid-background: var(--page-background);
   --cards-item-background: hsl(0deg 0% 0% / 0.1);
   --cards-item-background-hover: hsl(from var(--theme-background) calc(h + 120) s l);
+  --cards-item-title-lines: 2;
+  --cards-item-title-heigh: calc(var(--cards-item-title-lines) * 1lh);
   --cards-item-description-lines: 3;
   --footer-color: hsl(0deg 0% 0%);
   --animation-timing: 0.2s;
