@@ -15,7 +15,7 @@ import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 
 const styles = () => {
-  let pipeline = src(paths.src.css)
+  let pipeline = src(paths.src.css, { allowEmpty: true })
     .pipe(plumber({
       errorHandler: function (err) {
         console.error('SASS error:', err.message);
@@ -46,7 +46,7 @@ const styles = () => {
 };
 
 const stylesPassthrough = () => {
-  return src(paths.src.cssPassthrough)
+  return src(paths.src.cssPassthrough, { allowEmpty: true })
     .pipe(plumber({
       errorHandler: function (err) {
         console.error('CSS error:', err.message);
