@@ -22,16 +22,17 @@ const styles = () => {
         this.emit('end');
       }
     }));
+
   if (!options.isProd) {
     pipeline = pipeline.pipe(sourcemaps.init());
   }
+
   pipeline = pipeline
     .pipe(sass(options.sass))
     .pipe(autoprefixer(options.autoprefixer));
 
   if (options.isProd) {
-    pipeline = pipeline
-      .pipe(rename(options.rename));
+    pipeline = pipeline.pipe(rename(options.rename));
   } else {
     pipeline = pipeline.pipe(CSSbeautify(options.CSSbeautify));
   }
