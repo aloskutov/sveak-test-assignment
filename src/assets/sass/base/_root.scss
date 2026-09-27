@@ -12,7 +12,7 @@
   --side-menu-background: hsl(263deg 100% 87%);
   --side-menu-color: hsl(0deg 0% 0% / 0.14);
   --side-menu-item-background-hover: hsl(306deg 100% 61% / 0.15);
-  --side-menu-width: 310px;
+  --side-menu-width: 100%;
   --side-menu-padding: 22px;
   --side-menu-padding-top: 39px;
   --side-menu-item-height: 50px;
@@ -29,11 +29,13 @@
 
   @media (640px <= width <= 1023px) {
     --theme-background: hsl(202deg 100% 79%);
+    --side-menu-width: 260px;
   }
 
   @media (width >= 1024px) {
     --theme-background: hsl(263deg 100% 87% / 0.4);
     --side-menu-background: var(--theme-background);
+    --side-menu-width: 310px;
   }
 
   @media (prefers-reduced-motion: reduce) {
