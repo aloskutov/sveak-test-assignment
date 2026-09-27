@@ -29,7 +29,7 @@
   }
 
   &__item-desc {
-    margin-block-start: 1rem;
+    margin-block-start: 0.5lh;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     line-clamp: var(--cards-item-description-lines);
