@@ -2,6 +2,6 @@ extends /layouts/base.pug
 include /partials/cards/spells.pug
 
 block content
-  section.cards
+  div.cards
     each spell in spells
       +cardsItem(spell)
