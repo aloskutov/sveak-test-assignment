@@ -1,6 +1,7 @@
 .footer {
   $b: #{&};
 
+  color: var(--footer-color);
   background-color: var(--theme-background);
   padding: 12px;
   font-size: 12px;
