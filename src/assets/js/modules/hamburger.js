@@ -9,6 +9,11 @@ class Hamburger {
   #scrollToTop;
   #handleClick;
   #handleKeydown;
+  #desktopQuery;
+  #handleDesktopChange;
+
+  static DEFAULT_MENU_SELECTOR = '#side-menu';
+  static DESKTOP_BREAKPOINT = '(min-width: 1024px)';
 
   /**
    * Конструктор класса
@@ -16,7 +21,11 @@ class Hamburger {
    * @param {string} menuSelector — селектор меню
    * @param {object} options — опции: openLabel, closeLabel, scrollToTop
    */
-  constructor(buttonSelector, menuSelector = '#side-menu', options = {}) {
+  constructor(
+    buttonSelector,
+    menuSelector = Hamburger.DEFAULT_MENU_SELECTOR,
+    options = {}
+  ) {
     this.#button = document.querySelector(buttonSelector);
     this.#menu = document.querySelector(menuSelector);
 
@@ -28,6 +37,18 @@ class Hamburger {
     this.#scrollToTop = options.scrollToTop ?? false;
 
     this.#init();
+
+    this.#desktopQuery = window.matchMedia(Hamburger.DESKTOP_BREAKPOINT);
+    this.#handleDesktopChange = (event) => {
+      if (event.matches) {
+        this.#enableMenu();
+      } else if (!this.#isOpen()) {
+        this.#disableMenu();
+      }
+    };
+
+    this.#desktopQuery.addEventListener('change', this.#handleDesktopChange);
+    this.#handleDesktopChange(this.#desktopQuery);
 
     this.#handleClick = () => this.#toggle();
     this.#handleKeydown = (event) => {
@@ -61,12 +82,30 @@ class Hamburger {
   }
 
   /**
+   * Делает меню доступным для скринридера и Tab
+   */
+  #enableMenu() {
+    this.#menu.removeAttribute('aria-hidden');
+    this.#menu.removeAttribute('inert');
+  }
+
+  /**
+   * Скрывает меню от скринридера и исключает из Tab
+   */
+  #disableMenu() {
+    this.#menu.setAttribute('aria-hidden', 'true');
+    this.#menu.setAttribute('inert', '');
+  }
+
+  /**
    * Открывает меню
    */
   #open() {
     this.#button.setAttribute('aria-expanded', 'true');
     this.#button.setAttribute('aria-label', this.#closeLabel);
-    this.#menu.setAttribute('aria-hidden', 'false');
+    if (!this.#desktopQuery.matches) {
+      this.#enableMenu();
+    }
     document.addEventListener('keydown', this.#handleKeydown);
   }
 
@@ -76,10 +115,16 @@ class Hamburger {
   #close() {
     this.#button.setAttribute('aria-expanded', 'false');
     this.#button.setAttribute('aria-label', this.#openLabel);
-    this.#menu.setAttribute('aria-hidden', 'true');
+
+    if (!this.#desktopQuery.matches) {
+      this.#disableMenu();
+    }
+
     document.removeEventListener('keydown', this.#handleKeydown);
 
-    if (this.#scrollToTop) { this.#menu.scrollTop = 0; }
+    if (this.#scrollToTop) {
+      this.#menu.scrollTop = 0;
+    }
   }
 
   /**
@@ -95,6 +140,7 @@ class Hamburger {
   destroy() {
     this.#button.removeEventListener('click', this.#handleClick);
     document.removeEventListener('keydown', this.#handleKeydown);
+    this.#desktopQuery.removeEventListener('change', this.#handleDesktopChange);
   }
 }
 

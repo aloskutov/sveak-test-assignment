@@ -16,12 +16,12 @@ class AdjustLastRow {
 
     if (!this.#grid) throw new Error(`Grid not found: ${gridSelector}`);
 
-    this.#items = this.#grid.querySelectorAll(itemSelector);
+    this.#items = Array.from(this.#grid.querySelectorAll(itemSelector));
     this.#resizeObserver = null;
 
-    requestAnimationFrame(() => this.#run());
-
-    this.#resizeObserver = new ResizeObserver(() => { requestAnimationFrame(() => this.#run()); });
+    this.#resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(() => this.#run());
+    });
     this.#resizeObserver.observe(this.#grid);
   }
 
@@ -48,7 +48,9 @@ class AdjustLastRow {
    * Сбрасывает стили у скрытых элементов грида
    */
   #resetStyle() {
-    this.#items.forEach((item) => { item.style.display = ''; });
+    for (const item of this.#items) {
+      item.style.display = '';
+    }
   }
 
   /**
@@ -62,8 +64,9 @@ class AdjustLastRow {
       const remainingItems = totalItems % columns;
 
       if (remainingItems > 0) {
-        const startIndex = totalItems - remainingItems;
-        for (let i = startIndex; i < totalItems; i++) { this.#items[i].style.display = 'none'; }
+        this.#items.slice(-remainingItems).forEach((item) => {
+          item.style.display = 'none';
+        });
       }
     }
   }
