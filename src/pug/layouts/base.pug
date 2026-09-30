@@ -1,12 +1,12 @@
 doctype html
 html(lang="en")
   include /partials/head.pug
+  include /mixins/hamburger.pug
   body
-    include /mixins/hamburger.pug
+    +hamburger({expanded: false})
     include /partials/side-menu.pug
     include /partials/header.pug
 
-    +hamburger({expanded: false})
     main
       block content
 
