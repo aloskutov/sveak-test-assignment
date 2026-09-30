@@ -10,17 +10,11 @@
   mask: var(--icon) center / contain no-repeat;
   opacity: 0.13;
   transition: color var(--animation-timing) ease, opacity var(--animation-timing) ease;
-}
 
-.icon-button:hover {
-  opacity: 0.5;
-}
+  &--first  { --icon: url("../images/header-button-1.svg"); }
+  &--second { --icon: url("../images/header-button-2.svg"); }
+  &--third  { --icon: url("../images/header-button-3.svg"); }
 
-.icon-button:focus-visible {
-  outline: 2px solid currentcolor;
-  outline-offset: 2px;
+  &:hover { opacity: 0.5; }
+  &:focus-visible { opacity: 1; }
 }
-
-.icon-button--first  { --icon: url("../images/header-button-1.svg"); }
-.icon-button--second { --icon: url("../images/header-button-2.svg"); }
-.icon-button--third  { --icon: url("../images/header-button-3.svg"); }
