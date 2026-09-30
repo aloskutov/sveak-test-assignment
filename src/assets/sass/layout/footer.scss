@@ -22,5 +22,10 @@
 @media (width >= 1024px) {
   .footer {
     border-top: 1px solid hsl(0deg 0% 0% / 0.14);
+
+    &__text {
+      display: block;
+      width: 960px;
+    }
   }
 }
