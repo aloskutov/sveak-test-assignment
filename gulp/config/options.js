@@ -33,7 +33,7 @@ const options = {
     basedir: srcFolder + 'pug',
   },
   autoprefixer: {
-    overrideBrowserslist: ['last 8 versions'],
+    overrideBrowserslist: ['last 2 versions', 'not dead'],
     cascade: true,
   },
   CSSbeautify: {
