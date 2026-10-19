@@ -3,7 +3,7 @@
     "stylelint-scss",
     "@morev/stylelint-plugin"
   ],
-  "extends": ["stylelint-config-standard-scss"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-clean-order"],
   "rules": {
     "max-nesting-depth": [3, {
       "ignore": ["pseudo-classes", "blockless-at-rules"]
