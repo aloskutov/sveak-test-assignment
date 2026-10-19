@@ -1,20 +1,26 @@
 .icon-button {
   $b: #{&};
 
-  width: var(--icon-size, 21px);
-  height: var(--icon-size, 21px);
-  border: 0;
-  background: none;
   cursor: pointer;
-  background-color: currentcolor;
-  mask: var(--icon) center / contain no-repeat;
+
+  width: var(--icon-width);
+  height: var(--icon-height);
+  border: 0;
+
   opacity: 0.13;
+  background-color: currentcolor;
+
+  mask: var(--icon) center / contain no-repeat;
+
   transition: color var(--animation-timing) ease, opacity var(--animation-timing) ease;
 
   &--first  { --icon: url("../images/header-button-1.svg"); }
   &--second { --icon: url("../images/header-button-2.svg"); }
   &--third  { --icon: url("../images/header-button-3.svg"); }
 
-  &:hover { opacity: 0.5; }
   &:focus-visible { opacity: 1; }
+
+  @media (hover: hover) {
+    &:hover { opacity: 0.5; }
+  }
 }

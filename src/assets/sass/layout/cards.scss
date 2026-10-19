@@ -1,56 +1,65 @@
+@use '../abstracts/variables' as *;
+
 .cards {
   $b: #{&};
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(115px, max-content));
-  justify-content: center;
   gap: 16px;
+  justify-content: center;
+
   padding: 10px;
 
   &__item {
-    font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
-    background-color: var(--cards-item-background);
-    padding: 8px;
-    border-radius: 8px;
+    overflow: hidden;
+
     aspect-ratio: 1 / 1;
-    box-sizing: border-box;
     width: 100%;
     max-width: 150px;
     margin: 0 auto;
-    overflow: hidden;
+    padding: 8px;
+    border-radius: 8px;
+
+    font-size: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
+
+    background-color: var(--cards-item-background);
+
     transition: background-color var(--animation-timing);
   }
 
   &__item-title {
-    height: var(--cards-item-title-height);
-    font-weight: bold;
-    overflow-wrap: break-word;
-    hyphens: auto;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    line-clamp: var(--cards-item-title-lines);
     -webkit-line-clamp: var(--cards-item-title-lines);
-    overflow: hidden;
+    line-clamp: var(--cards-item-title-lines);
+
+    height: var(--cards-item-title-height);
+
+    font-weight: bold;
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
   &__item-desc {
-    margin-block-start: 0.5lh;
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    line-clamp: var(--cards-item-description-lines);
     -webkit-line-clamp: var(--cards-item-description-lines);
-    overflow: hidden;
+    line-clamp: var(--cards-item-description-lines);
+
+    margin-block-start: 0.5lh;
   }
 }
 
-@media (width >= 640px) {
+@media (width >= $bp-sm) {
   .cards {
     grid-template-columns: repeat(auto-fill, minmax(128px, max-content));
 
     &__item {
-      height: 128px;
-      max-width: 174px;
       aspect-ratio: auto;
+      max-width: 174px;
+      height: 128px;
     }
   }
 }

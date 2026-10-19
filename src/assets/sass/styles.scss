@@ -1,13 +1,10 @@
 // 1. Abstracts
-// @use 'abstracts/variables';
-// @use 'abstracts/mixins';
-// @use 'abstracts/functions';
+@use 'abstracts/variables';
 
 // 2. Base
 @use 'base/reset';
 @use 'base/root';
 @use 'base/page';
-@use 'base/typography';
 
 // 3. Layout
 @use 'layout/header';

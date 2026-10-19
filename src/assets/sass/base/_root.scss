@@ -1,14 +1,15 @@
-:root {
-  font-size: 16px;
+@use '../abstracts/variables' as *;
 
+:root {
   --z-base: 1;
   --z-header: 1000;
   --z-side-menu: 1100;
   --z-hamburger: 1200;
-  --hamburger-border-color: transparent;
-  --hamburger-border-width: 0;
+  --body-background: #fff;
   --hamburger-margin-top: 20px;
   --hamburger-margin-left: 20px;
+  --icon-width: 21px;
+  --icon-height: 21px;
   --side-menu-background: hsl(263deg 100% 87%);
   --side-menu-color: hsl(0deg 0% 0% / 0.14);
   --side-menu-item-background-hover: hsl(306deg 100% 61% / 0.15);
@@ -20,7 +21,6 @@
   --header-height: 60px;
   --theme-background: hsl(141deg 93% 83%);
   --page-background: hsl(from var(--theme-background) h s l / 0.4);
-  --cards-grid-background: var(--page-background);
   --cards-item-background: hsl(0deg 0% 0% / 0.1);
   --cards-item-title-lines: 2;
   --cards-item-title-height: calc(var(--cards-item-title-lines) * 1lh);
@@ -29,12 +29,15 @@
   --animation-timing: 0.2s;
   --animation-delay: 0.2s;
 
-  @media (640px <= width <= 1023px) {
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+
+  @media ($bp-sm <= width < $bp-md) {
     --theme-background: hsl(202deg 100% 79%);
     --side-menu-width: 260px;
   }
 
-  @media (width >= 1024px) {
+  @media (width >= $bp-md) {
     --theme-background: hsl(263deg 100% 87% / 0.4);
     --side-menu-background: var(--theme-background);
     --side-menu-width: 310px;

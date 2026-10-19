@@ -1,4 +1,6 @@
-@media (width < 640px) {
+@use '../abstracts/variables' as *;
+
+@media (width < $bp-sm) {
   html:has(.hamburger[aria-expanded='true']) {
     overflow: hidden;
   }

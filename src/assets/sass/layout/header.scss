@@ -1,24 +1,29 @@
+@use '../abstracts/variables' as *;
+
 .header {
   $b: #{&};
 
   position: sticky;
-  top: 0;
   z-index: var(--z-header);
-  width: stretch;
-  height: var(--header-height);
-  background-color: var(--theme-background);
+  top: 0;
+
   display: flex;
   align-items: center;
 
+//  width: stretch;
+  height: var(--header-height);
+
+  background-color: var(--theme-background);
+
   &__buttons {
-    margin-left: auto;
-    margin-right: 10px;
     display: flex;
     gap: 16px;
+    margin-right: 10px;
+    margin-left: auto;
   }
 }
 
-@media (width >= 1024px) {
+@media (width >= $bp-md) {
   .header {
     position: static;
     z-index: auto;

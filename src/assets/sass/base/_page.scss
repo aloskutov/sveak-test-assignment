@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 body {
   display: grid;
   grid-template:
@@ -6,19 +8,19 @@ body {
     "footer" auto
     / 1fr;
   min-height: 100vh;
-  background-color: #fff;
+  background-color: var(--body-background);
 }
 
 .header { grid-area: header; }
 
-main {
+.main {
   grid-area: main;
   background-color: var(--page-background);
 }
 
 .footer { grid-area: footer; }
 
-@media (width >= 1024px) {
+@media (width >= $bp-md) {
   body {
     grid-template:
       "menu header" auto

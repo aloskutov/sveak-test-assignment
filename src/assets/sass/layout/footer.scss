@@ -1,25 +1,29 @@
+@use '../abstracts/variables' as *;
+
 .footer {
   $b: #{&};
 
-  color: var(--footer-color);
-  background-color: var(--theme-background);
   padding: 12px;
+
   font-size: 12px;
   font-weight: 500;
+  color: var(--footer-color);
+
+  background-color: var(--theme-background);
 
   &__title{
-    font-weight: 700;
     font-size: 14px;
+    font-weight: 700;
   }
 }
 
-@media (640px <= width <= 1023px) {
+@media ($bp-sm <= width < $bp-md) {
   .footer {
     padding-block-end: 0;
   }
 }
 
-@media (width >= 1024px) {
+@media (width >= $bp-md) {
   .footer {
     border-top: 1px solid hsl(0deg 0% 0% / 0.14);
 
