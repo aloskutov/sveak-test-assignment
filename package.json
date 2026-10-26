@@ -7,6 +7,7 @@
   "devDependencies": {
     "@aloskutov/prettier-config": "^1.0.1",
     "@eslint/js": "^10.0.1",
+    "@markuplint/pug-parser": "^5.3.0",
     "@morev/stylelint-plugin": "^0.7.0",
     "browser-sync": "^3.0.4",
     "cross-env": "^10.1.0",
@@ -23,6 +24,7 @@
     "gulp-rename": "^2.1.0",
     "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^3.0.0",
+    "markuplint": "^5.3.0",
     "prettier": "^3.9.10",
     "pug": "^3.0.4",
     "sass": "^1.105.2",
@@ -34,9 +36,11 @@
     "webpack-stream": "^7.0.0"
   },
   "scripts": {
-    "test": "npm run test:scss && npm run test:js && npm run test:gulp",
-    "test:scss": "stylelint \"**/*.scss\"",
-    "test:js": "eslint ./src/assets/js/**/*.js",
+    "test": "npm run lint:pug && npm run lint:scss && npm run lint:js && npm run test:gulp && npm run lint:html",
+    "lint:scss": "stylelint ./src/assets/sass/**/*.scss",
+    "lint:js": "eslint ./src/assets/js/**/*.js",
+    "lint:html": "markuplint ./build/**/*.html",
+    "lint:pug": "markuplint ./src/pug/**/*.pug",
     "test:gulp": "cross-env NODE_ENV=test gulp build",
     "build": "cross-env NODE_ENV=production gulp build",
     "dev": "gulp dev",
